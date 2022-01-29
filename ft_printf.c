@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 12:41:14 by lide              #+#    #+#             */
-/*   Updated: 2022/01/27 13:05:15 by lide             ###   ########.fr       */
+/*   Created: 2022/01/29 02:23:57 by lide              #+#    #+#             */
+/*   Updated: 2022/01/29 06:09:55 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int ft_printf(const char *attributes, ...)
 {
-	t_list	**liste;
-	t_list	*tmp;
+	va_list	arg_ptr;
+	int		i;
 
-	if (!lst || !del)
-		return ;
-	liste = lst;
-	while (*lst)
+	i = 0;
+		va_start(arg_ptr, attributes);
+	while (attributes[i])
 	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
+		//recuperer % cspdixX% et y placer va arg dans le type correspondant.
+		va_arg(arg_ptr, attributes);
 	}
-	*lst = NULL;
 }

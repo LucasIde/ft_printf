@@ -3,9 +3,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int counter(int i)
+int	counter(size_t i)
 {
-	int ct;
+	int	ct;
 
 	ct = 0;
 	while (i > 0)
@@ -16,11 +16,11 @@ int counter(int i)
 	return (ct);
 }
 
-char *d_to_hd(int i)
+char	*d_to_hd(size_t i)
 {
-	int modulo;
-	char *hexa;
-	int ct;
+	int		modulo;
+	char	*hexa;
+	int		ct;
 
 	ct = counter(i);
 	hexa = (char *)malloc(sizeof(char) * (ct + 1));
@@ -41,18 +41,34 @@ char *d_to_hd(int i)
 	}
 	return (hexa);
 }
+/*
+long	ft_unsigned(unsigned int i)
+{
+	long	j;
 
+	if (i >= 0)
+		return ((long)i);
+	else
+	{
+		j = 4294967296 + i;
+		return (j);
+	}
+} vraiment utile ?
+*/
 int main(void)
 {
 	char *c;
 	int ct;
-	char c2 = 'a';
-	int i = -1;
+	char ch[] = "a";
+	unsigned int i = -1;
+	size_t j;
 	void *v;
 
+	v = (void *)ch;
+	j = (size_t)v;
 	ct = 0;
-	printf("%u\n", i);
-	c = d_to_hd(i);//doit gerer le cas négatif passage unsigned
+	printf("\n%u\n", i);
+	//c = d_to_hd(j);
 	while (c[ct])
 	{
 		write(1, &c[ct], 1);
@@ -60,3 +76,6 @@ int main(void)
 	}
 	return (0);
 }
+
+//doit gerer le cas négatif passage unsigned
+//dois rajouter 0x devant adresse passage de void * dans size_t
