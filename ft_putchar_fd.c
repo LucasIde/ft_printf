@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 14:28:30 by lide              #+#    #+#             */
-/*   Updated: 2022/01/22 14:52:56 by lide             ###   ########.fr       */
+/*   Created: 2022/02/01 14:52:04 by lide              #+#    #+#             */
+/*   Updated: 2022/02/01 14:57:25 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_putchar_fd(char c, int fd, char attr)
 {
-	if (!lst || !f)
-		return ;
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	if (attr == '%')
+		c = '%'
+	write(fd, &c, 1);
 }

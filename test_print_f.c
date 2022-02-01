@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+/*
 int	counter(size_t i)
 {
 	int	ct;
@@ -41,7 +41,7 @@ char	*d_to_hd(size_t i)
 	}
 	return (hexa);
 }
-/*
+
 long	ft_unsigned(unsigned int i)
 {
 	long	j;
@@ -54,7 +54,7 @@ long	ft_unsigned(unsigned int i)
 		return (j);
 	}
 } vraiment utile ?
-*/
+
 int main(void)
 {
 	char *c;
@@ -79,3 +79,23 @@ int main(void)
 
 //doit gerer le cas négatif passage unsigned
 //dois rajouter 0x devant adresse passage de void * dans size_t
+*/
+
+int    ft_count(unsigned int n)
+{
+    int ct;
+
+    ct = 0;
+    while (n > 0)
+    {
+        n /= 10;
+        ct++;
+    }
+    return (ct);
+}
+
+int main(void)
+{
+  printf("%d", ft_count(516401810));
+  return 0;
+}

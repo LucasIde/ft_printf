@@ -6,11 +6,12 @@
 #    By: lide <lide@student.s19.be>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 02:45:42 by lide              #+#    #+#              #
-#    Updated: 2022/01/29 08:07:56 by lide             ###   ########.fr        #
+#    Updated: 2022/02/01 17:05:19 by lide             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_printf.c
+SRCS		=	ft_printf.c\
+				ft_putnbr_fd2.c
 
 NAME		= libftprintf.a
 CC			= gcc
@@ -21,20 +22,21 @@ RM			= rm -f
 ${MAKE}		= make
 
 ${NAME}:	${OBJS}
-			${MAKE} -C libft
+			make -C ./libft
 			cp libft/libft.a libftprintf.a
 			${LIBC} ${NAME} ${OBJS}
 
 all:		${NAME}
 
+clean:
+			${RM} ${OBJS}
+			make clean -C ./libft
 
-modifier quand avancer
-		clean:
-					${RM} ${OBJS}
+fclean:
+			${RM} ${OBJS}
+			${RM} ${NAME}
+			make fclean -C ./libft
 
-		fclean:		clean
-					${RM} ${NAME}
+re:			fclean all
 
-		re:			fclean all
-
-		.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re

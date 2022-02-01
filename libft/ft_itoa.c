@@ -6,15 +6,15 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:16:30 by lide              #+#    #+#             */
-/*   Updated: 2022/01/24 17:29:54 by lide             ###   ########.fr       */
+/*   Updated: 2022/02/01 17:28:09 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count(long n2)
+static int	count(unsigned long n2)
 {
-	long	tmp;
+	unsigned long	tmp;
 	int		nb;
 
 	tmp = n2;
@@ -32,7 +32,7 @@ static int	count(long n2)
 	return (nb);
 }
 
-static char	*ft_itoa2(long n2, int nb)
+static char	*ft_itoa2(unsigned long n2, int nb)
 {
 	int		i;
 	char	*a;
@@ -57,13 +57,13 @@ static char	*ft_itoa2(long n2, int nb)
 	return (a);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(unsigned int n)
 {
 	int		nb;
-	long	n2;
+	unsigned long	n2;
 	char	*a;
 
-	n2 = (long)n;
+	n2 = (unsigned long)n;
 	if (n2 == 0)
 	{
 		a = (char *)malloc(sizeof(char) * 2);
