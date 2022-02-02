@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 14:52:04 by lide              #+#    #+#             */
-/*   Updated: 2022/02/01 14:57:25 by lide             ###   ########.fr       */
+/*   Created: 2022/02/02 14:20:39 by lide              #+#    #+#             */
+/*   Updated: 2022/02/02 18:02:16 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd, char attr)
+int	ft_printstr(char *s)
 {
-	if (attr == '%')
-		c = '%'
-	write(fd, &c, 1);
+	int	i;
+
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	i = ft_strlen(s);
+	write(1, s, i);
+	return (i);
 }

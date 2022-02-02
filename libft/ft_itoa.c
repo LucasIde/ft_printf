@@ -6,7 +6,7 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:16:30 by lide              #+#    #+#             */
-/*   Updated: 2022/02/01 17:28:09 by lide             ###   ########.fr       */
+/*   Updated: 2022/02/02 18:38:12 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	count(unsigned long n2)
 {
 	unsigned long	tmp;
-	int		nb;
+	int				nb;
 
 	tmp = n2;
 	nb = 0;
@@ -59,9 +59,9 @@ static char	*ft_itoa2(unsigned long n2, int nb)
 
 char	*ft_itoa(unsigned int n)
 {
-	int		nb;
+	int				nb;
+	char			*a;
 	unsigned long	n2;
-	char	*a;
 
 	n2 = (unsigned long)n;
 	if (n2 == 0)

@@ -6,12 +6,16 @@
 #    By: lide <lide@student.s19.be>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 02:45:42 by lide              #+#    #+#              #
-#    Updated: 2022/02/01 17:05:19 by lide             ###   ########.fr        #
+#    Updated: 2022/02/02 19:34:40 by lide             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	ft_printf.c\
-				ft_putnbr_fd2.c
+				ft_printnbr.c\
+				ft_printstr.c\
+				ft_printchar.c\
+				ft_printhex_p.c\
+				ft_printhex_x.c
 
 NAME		= libftprintf.a
 CC			= gcc

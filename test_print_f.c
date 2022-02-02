@@ -1,4 +1,4 @@
-
+/*
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -80,7 +80,7 @@ int main(void)
 //doit gerer le cas négatif passage unsigned
 //dois rajouter 0x devant adresse passage de void * dans size_t
 */
-
+/*
 int    ft_count(unsigned int n)
 {
     int ct;
@@ -92,10 +92,12 @@ int    ft_count(unsigned int n)
         ct++;
     }
     return (ct);
-}
-
+}*/
+/*
 int main(void)
 {
-  printf("%d", ft_count(516401810));
+	void *v;
+  printf("%p", v);
   return 0;
 }
+*/

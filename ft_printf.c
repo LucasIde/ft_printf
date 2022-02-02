@@ -6,56 +6,61 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:23:57 by lide              #+#    #+#             */
-/*   Updated: 2022/02/01 17:52:24 by lide             ###   ########.fr       */
+/*   Updated: 2022/02/02 20:04:38 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int i;
+#include "ft_printf.h"
 
-#include "libftprintf.h"
+int	ft_sorting(const char *attr, va_list arg_ptr, int i)
+{
+	int	printed;
 
-int ft_printf(const char *attr, ...)
+	printed = 0;
+	if (attr[i] == 'd' || attr[i] == 'i')
+		printed = ft_printnbr_i(va_arg(arg_ptr, int));
+	else if (attr[i] == 'u')
+		printed = ft_printnbr_u(va_arg(arg_ptr, unsigned int));
+	else if (attr[i] == 's')
+		printed = ft_printstr(va_arg(arg_ptr, char *));
+	else if (attr[i] == 'c')
+		printed = ft_printchar(va_arg(arg_ptr, int));
+	else if (attr[i] == '%')
+		printed = ft_printchar('%');
+	else if (attr[i] == 'p')
+		printed = ft_printhex_p(va_arg(arg_ptr, unsigned long));
+	else if (attr[i] == 'x' || attr[i] == 'X')
+		printed = ft_printhex_x(va_arg(arg_ptr, unsigned int), attr[i]);
+	return (printed);
+}
+
+int	ft_printf(const char *attr, ...)
 {
 	va_list	arg_ptr;
 	int		i;
 	int		printed;
+	int		tmp;
 
 	i = 0;
+	printed = 0;
 	va_start(arg_ptr, attr);
 	while (attr[i])
 	{
+		tmp = printed;
 		if (attr[i] == '%')
 		{
-			++i;
-			printf("hey");
-			if (attr[i] == 'd' || attr[i] == 'i')
-				printed = ft_putnbr_i_fd(va_arg(arg_ptr, int), 1);
-			if (attr[i] == 'u')
-				printed = ft_putnbr_u_fd(va_arg(arg_ptr, unsigned int), 1);/*
-			if (attr[++i] == 's')
-				printed = ft_putstr_fd(va_arg(arg_ptr, char *), 1);
-			if (attr[++i] == 'c' || attr[i] == '%')
-				printed = ft_putchar_fd(va_arg(arg_ptr, char), 1, attr[i]);
-			if (attr[++i] == 'x' || attr[i] == 'X' || attr[i] == 'p')
-				printed = ft_puthex_fd(va_arg(arg_ptr, size_t), 1, attr[i]);*/
+			i++;
+			printed += ft_sorting(attr, arg_ptr, i);
+			if (tmp > printed)
+			{
+				va_end(arg_ptr);
+				return (printed + 1);
+			}
 		}
+		else
+			printed += ft_printchar(attr[i]);
 		i++;
 	}
 	va_end(arg_ptr);
 	return (printed);
-}
-		//va_arg(arg_ptr, attr);
-		//recuperer % cspdixX% et y placer va arg dans le type correspondant.
-
-int main(void)
-{
-	int fp;
-	//int p;
-
-	fp = ft_printf("%d", 1512);
-	//p = printf("\n%d", 1512);
-	printf("\n%d\n", fp);
-	//printf("%d", p - 1);
-
-	return (0);
 }

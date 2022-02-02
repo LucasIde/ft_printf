@@ -1,52 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
+/*   ft_printnbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 14:51:32 by lide              #+#    #+#             */
-/*   Updated: 2022/02/01 14:51:35 by lide             ###   ########.fr       */
+/*   Created: 2022/02/02 14:20:25 by lide              #+#    #+#             */
+/*   Updated: 2022/02/02 19:58:24 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	counter(size_t i)
+int	ft_printnbr_u(unsigned int n)
 {
-	int	ct;
+	char	*nb;
+	int		ct;
 
-	ct = 0;
-	while (i > 0)
-	{
-		i /= 16;
-		ct++;
-	}
+	nb = ft_itoa(n);
+	if (!nb)
+		return (-1);
+	ct = ft_printstr(nb);
+	free(nb);
 	return (ct);
 }
 
-char	*d_to_hd(size_t i)
+int	ft_printnbr_i(int n)
 {
-	int		modulo;
-	char	*hexa;
+	long	tmp;
 	int		ct;
 
-	ct = counter(i);
-	hexa = (char *)malloc(sizeof(char) * (ct + 1));
-	if (!hexa)
-		return (NULL);
-	hexa[ct] = 0;
-	ct--;
-	while (ct >= 0)
+	ct = 0;
+	tmp = (long)n;
+	if (tmp < 0)
 	{
-		modulo = i % 16;
-		if (modulo < 10)
-			modulo += '0';
-		else
-			modulo = (modulo % 10) + 'A';
-		hexa[ct] = modulo;
-		ct--;
-		i /= 16;
+		write(1, "-", 1);
+		tmp *= -1;
+		ct++;
 	}
-	return (hexa);
+	return (ft_printnbr_u((unsigned int)tmp) + ct);
 }
