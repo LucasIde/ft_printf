@@ -6,7 +6,7 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:23:57 by lide              #+#    #+#             */
-/*   Updated: 2022/02/02 20:04:38 by lide             ###   ########.fr       */
+/*   Updated: 2022/02/03 15:23:16 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,15 @@ int	ft_printf(const char *attr, ...)
 	int		printed;
 	int		tmp;
 
-	i = 0;
+	i = -1;
 	printed = 0;
 	va_start(arg_ptr, attr);
-	while (attr[i])
+	while (attr[++i])
 	{
 		tmp = printed;
 		if (attr[i] == '%')
 		{
-			i++;
-			printed += ft_sorting(attr, arg_ptr, i);
+			printed += ft_sorting(attr, arg_ptr, ++i);
 			if (tmp > printed)
 			{
 				va_end(arg_ptr);
@@ -59,7 +58,6 @@ int	ft_printf(const char *attr, ...)
 		}
 		else
 			printed += ft_printchar(attr[i]);
-		i++;
 	}
 	va_end(arg_ptr);
 	return (printed);

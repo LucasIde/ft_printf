@@ -6,7 +6,7 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:33:02 by lide              #+#    #+#             */
-/*   Updated: 2022/02/02 19:55:58 by lide             ###   ########.fr       */
+/*   Updated: 2022/02/03 15:51:33 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	counter(unsigned long i)
 	return (ct);
 }
 
-static int	d_to_hd(unsigned long i, int printed, char maj)
+static int	d_to_hd(unsigned long i, int printed)
 {
 	int		modulo;
 	char	*hexa;
@@ -45,13 +45,13 @@ static int	d_to_hd(unsigned long i, int printed, char maj)
 		if (modulo < 10)
 			modulo += '0';
 		else
-			modulo = (modulo % 10) + maj;
+			modulo = (modulo % 10) + 'a';
 		hexa[ct] = modulo;
 		ct--;
 		i /= 16;
-		printed = ft_printstr(hexa);
-		free (hexa);
 	}
+	printed += ft_printstr(hexa);
+	free (hexa);
 	return (printed);
 }
 
@@ -61,5 +61,5 @@ int	ft_printhex_p(unsigned long nb)
 
 	printed = 2;
 	write(1, "0x", 2);
-	return (d_to_hd(nb, printed, 'a'));
+	return (d_to_hd(nb, printed));
 }
