@@ -6,7 +6,7 @@
 #    By: lide <lide@student.s19.be>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 02:45:42 by lide              #+#    #+#              #
-#    Updated: 2022/02/02 19:34:40 by lide             ###   ########.fr        #
+#    Updated: 2022/02/04 11:55:21 by lide             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ ${MAKE}		= make
 
 ${NAME}:	${OBJS}
 			make -C ./libft
-			cp libft/libft.a libftprintf.a
+			cp libft/libft.a ${NAME}
 			${LIBC} ${NAME} ${OBJS}
 
 all:		${NAME}
