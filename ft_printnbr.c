@@ -6,7 +6,7 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:20:25 by lide              #+#    #+#             */
-/*   Updated: 2022/02/02 19:58:24 by lide             ###   ########.fr       */
+/*   Updated: 2022/02/07 13:19:52 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_printnbr_i(int n)
 {
 	long	tmp;
 	int		ct;
+	int		ct_r;
 
 	ct = 0;
 	tmp = (long)n;
@@ -38,5 +39,8 @@ int	ft_printnbr_i(int n)
 		tmp *= -1;
 		ct++;
 	}
-	return (ft_printnbr_u((unsigned int)tmp) + ct);
+	ct_r = ft_printnbr_u((unsigned int)tmp);
+	if (ct_r == -1)
+		return (-1);
+	return (ct_r + ct);
 }
