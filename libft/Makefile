@@ -6,12 +6,11 @@
 #    By: lide <lide@student.s19.be>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 19:01:47 by lide              #+#    #+#              #
-#    Updated: 2022/02/03 15:37:24 by lide             ###   ########.fr        #
+#    Updated: 2022/02/07 14:52:00 by lide             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_itoa.c\
-				ft_strlen.c
+SRCS		=	ft_itoa.c
 
 NAME		= libft.a
 CC			= gcc
