@@ -6,7 +6,7 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:23:57 by lide              #+#    #+#             */
-/*   Updated: 2022/02/03 15:23:16 by lide             ###   ########.fr       */
+/*   Updated: 2022/03/02 19:10:36 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,29 @@ int	ft_sorting(const char *attr, va_list arg_ptr, int i)
 
 int	ft_printf(const char *attr, ...)
 {
-	va_list	arg_ptr;
-	int		i;
-	int		printed;
-	int		tmp;
+	va_list				arg_ptr;
+	struct s_ft_printf	ft;
 
-	i = -1;
-	printed = 0;
+	ft.i = -1;
+	ft.printed = 0;
 	va_start(arg_ptr, attr);
-	while (attr[++i])
+	while (attr[++ft.i])
 	{
-		tmp = printed;
-		if (attr[i] == '%')
+		ft.tmp = ft.printed;
+		if (attr[ft.i] == '%')
 		{
-			printed += ft_sorting(attr, arg_ptr, ++i);
-			if (tmp > printed)
+			ft.printed += ft_sorting(attr, arg_ptr, ++ft.i);
+			if (ft.tmp > ft.printed)
 			{
+				if (attr[ft.i] == 'p')
+					ft.printed += 2;
 				va_end(arg_ptr);
-				return (printed + 1);
+				return (ft.printed + 1);
 			}
 		}
 		else
-			printed += ft_printchar(attr[i]);
+			ft.printed += ft_printchar(attr[ft.i]);
 	}
 	va_end(arg_ptr);
-	return (printed);
+	return (ft.printed);
 }

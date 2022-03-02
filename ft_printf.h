@@ -6,7 +6,7 @@
 /*   By: lide <lide@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:33:26 by lide              #+#    #+#             */
-/*   Updated: 2022/02/04 12:02:11 by lide             ###   ########.fr       */
+/*   Updated: 2022/03/02 18:50:02 by lide             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include <stdarg.h>
 # include "libft/libft.h"
+
+struct s_ft_printf
+{
+	int		i;
+	int		printed;
+	int		tmp;
+};
 
 int	ft_printf(const char *attr, ...);
 int	ft_printnbr_u(unsigned int n);
